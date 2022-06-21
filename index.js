@@ -4,7 +4,8 @@ const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const { token, OpenAIKey } = require('./config.json');
 
 //A couple fun things
-const { AnnieRohnan, Marv, Jeremy, Geralt, Carrie, Tom, Francois} = require('./strings.js');
+const { AnnieRohnan, Marv, Jeremy, Geralt} = require('./strings.js');
+const { Carrie, Tom } = require('./additionalStrings.js');
 
 //OpenAI Setup
 const { Configuration, OpenAIApi } = require("openai");
@@ -74,8 +75,6 @@ client.on("messageCreate", (message) => {
 			response = Carrie + message.content.substring(28) + "Carrie:";
 		} else if (message.content.substring(22, 25) == "Tom") {
 			response = Tom + message.content.substring(25) + "Tom:";
-		} else if (message.content.substring(22, 30) == "Francois") {
-			response = Francois + message.content.substring(30) + "Francois:";
 		} else {
 			response = message.content.substring(22);
 		}
