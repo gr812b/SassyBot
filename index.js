@@ -5,7 +5,7 @@ const { token, OpenAIKey } = require('./config.json');
 
 //A couple fun things
 const { AnnieRohnan, Marv, Jeremy, Geralt} = require('./strings.js');
-const { Carrie, Tom } = require('./additionalStrings.js');
+const { Carrie, Tom, Psycho, MorbMan } = require('./additionalStrings.js');
 
 //OpenAI Setup
 const { Configuration, OpenAIApi } = require("openai");
@@ -38,7 +38,6 @@ client.once('ready', () => {
 
 // Run all slash commands here
 client.on('interactionCreate', async interaction => {
-	console.log("here");
 	if (!interaction.isCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);
@@ -75,6 +74,10 @@ client.on("messageCreate", (message) => {
 			response = Carrie + message.content.substring(28) + "Carrie:";
 		} else if (message.content.substring(22, 25) == "Tom") {
 			response = Tom + message.content.substring(25) + "Tom:";
+		} else if (message.content.substring(22, 28) == "Psycho") {
+			response = Psycho + message.content.substring(28) + "Psycho:";
+		} else if (message.content.substring(22, 29) == "MorbMan") {
+			response = MorbMan + message.content.substring(29) + "MorbMan:";
 		} else {
 			response = message.content.substring(22);
 		}
@@ -91,11 +94,12 @@ client.on("messageCreate", (message) => {
 			});
 			//print the response text
 			for(i of response.data.choices) {
-				message.reply(i.text.substring(Math.max(i.length, 2000)))
+				message.reply(i.text);
+				console.log(i.text);
 			}
 		})();
     }
 });
 
-// Login to Discord with your client's token
+//Login to Discord with your client's token
 client.login(token);

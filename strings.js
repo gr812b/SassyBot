@@ -136,4 +136,4 @@ Me: `
 
 
 
-module.exports = {AnnieRohnan, Marv, Jeremy, Geralt, Carrie, Tom, Francois}
+module.exports = {AnnieRohnan, Marv, Jeremy, Geralt}
